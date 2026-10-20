@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Tarayıcı içinde çalışan sade payload ayrıştırıcı.">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; connect-src 'none'; img-src 'self'; base-uri 'none'; form-action 'none'">
+  <title>Auto Payload Parser</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header>
+    <a class="brand" href="./">{ } Auto Payload Parser</a>
+    <a href="https://github.com/efekanacar/auto-payload-parser" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+  </header>
+  <main>
+    <div class="heading"><h1>Payload ayrıştırıcı</h1><p>JSON, HTTP, JWT ve diğer payload verilerini yapıştırın, alanları inceleyin.</p></div>
+    <div class="workspace">
+      <section class="panel">
+        <div class="panel-head"><h2>Payload</h2><div class="actions"><button id="upload">↥ Dosya yükle</button><input id="file" type="file" accept=".txt,.json,text/plain,application/json" hidden><button id="clear">× Temizle</button></div></div>
+        <label class="sr-only" for="input">Ayrıştırılacak payload</label>
+        <textarea id="input" spellcheck="false" placeholder='Payload yapıştırın…&#10;&#10;{&#10;  "user": "analyst",&#10;  "ip": "192.168.1.10"&#10;}'></textarea>
+        <div class="input-foot"><span id="size">0 karakter · En fazla 1 MB</span><button class="primary" id="parse">Ayrıştır</button></div>
+      </section>
+      <section class="panel">
+        <div class="panel-head"><h2>Sonuçlar <span class="count" id="count">0</span></h2><span class="badge" id="format">Format bekleniyor</span></div>
+        <div class="toolbar"><input id="search" type="search" placeholder="Alan veya değerde ara…" aria-label="Sonuçlarda ara"><button id="copy" title="Görünen sonuçları kopyala">⧉ Kopyala</button><button id="csv" title="CSV indir">↓ CSV</button><button id="json" title="JSON indir">↓ JSON</button></div>
+        <div id="notice" role="status" aria-live="polite"></div>
+        <div class="table-wrap"><table><thead><tr><th>FIELD</th><th>VALUE</th><th>TYPE</th><th>PATH</th></tr></thead><tbody id="rows"></tbody></table><div id="empty"><h3>Henüz sonuç yok.</h3><p>Payload yapıştırın veya TXT / JSON dosyası yükleyin.</p></div></div>
+        <div class="result-foot"><span id="summary">0 alan</span></div>
+      </section>
+    </div>
+    <footer>İşlemler tarayıcıda gerçekleşir. Veriler kaydedilmez veya sunucuya gönderilmez.</footer>
+  </main>
+  <div id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
